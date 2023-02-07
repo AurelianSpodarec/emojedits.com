@@ -1,0 +1,3 @@
+=Grid System
+- Ties: 32x32
+- Map: x, y
