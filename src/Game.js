@@ -1,9 +1,7 @@
 import GameGrid from "./objects/GameGrid";
 import Player from "./objects/Player";
 
-
-
-export default class Game {
+class Game {
     constructor(gameWidth, gameHeight) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
@@ -14,6 +12,7 @@ export default class Game {
 
     draw(ctx) {
         this.gameGrid.draw(ctx);
+        this.gameGrid.getTiles();
         this.player.draw(ctx);
     }
 
@@ -26,3 +25,5 @@ export default class Game {
     }
 
 }
+
+export default Game;

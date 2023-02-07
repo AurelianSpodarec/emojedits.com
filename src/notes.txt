@@ -1,0 +1,3 @@
+- Create Physics System
+- A Sprite Manager
+- Colision system

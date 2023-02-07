@@ -2,12 +2,16 @@ import InputManager from "./../core/InputManager";
 
 class Player {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        this.position = {
+            x: x,
+            y: y
+        }
         this.radius = 8;
         this.width = 16;
         this.height = 16;
         this.speedY = 0;
+        this.acceleration = 0.2;
+
         this.image = new Image();
         this.image.src = "https://i.imgur.com/XmKOkU5.png";
 
@@ -15,35 +19,35 @@ class Player {
     }
 
     moveUp() {
-        this.y -= 5;
+        this.position.y -= 5;
     }
 
     moveRight() {
-        this.x += 5;
+        this.position.x += 5;
     }
 
     moveDown() {
-        this.y += 5;
+        this.position.y += 5;
     }
 
     moveLeft() {
-        this.x -= 5;
+        this.position.x -= 5;
     }
 
     draw(ctx) {
         ctx.beginPath();
-        // ctx.arc(this.x + this.radius, this.y + this.radius, this.radius, 0, 2 * Math.PI, false);
-        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        // ctx.arc(this.position.x + this.radius, this.position.y + this.radius, this.radius, 0, 2 * Math.PI, false);
+        ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
         ctx.fillStyle = 'yellow';
         ctx.fill();
     }
 
     update(delta, gameGrid) {    
-        this.speedY += 0.2;
-        this.y += this.speedY;
+        this.speedY += this.acceleration;
+        this.position.y += this.speedY;
 
-        if (this.y + this.height > 500) {
-            this.y = 500 - this.height;
+        if (this.position.y + this.height > 500) {
+            this.position.y = 500 - this.height;
             this.speedY = 0;
         }
 
